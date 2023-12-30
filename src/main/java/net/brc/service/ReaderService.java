@@ -17,4 +17,6 @@ public interface ReaderService {
 
     Reader save(Reader reader);
 
+    void createPasswordResetTokenForUser(final Reader reader, final String token);
+
 }
