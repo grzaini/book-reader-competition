@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common-header">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>BRC Website</title>
+  <!-- CSS FILES -->
+  <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet" />
+  <link th:href="@{/css/templatemo-tiya-golf-club.css}" rel="stylesheet">
+</head>
+
+<body>
+
+  <div th:fragment="navbar">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img th:src="@{/images/logo.png}" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
+        <span class="navbar-brand-text">
+                            BRC
+                            <small>Bookmen</small>
+                        </span>
+      </a>
+
+      <div class="d-lg-none ms-auto me-3">
+        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample"
+           role="button" aria-controls="offcanvasExample">Member Login</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_1">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_2">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_3">Membership</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_4">Events</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_5">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <div class="d-none d-lg-block ms-lg-3">
+          <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample"
+             role="button" aria-controls="offcanvasExample">Member Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+  <div th:fragment="footer">
+
+
+  </div>
+
+  <div th:fragment="body-bottom-scripts">
+
+    <!-- JAVASCRIPT FILES -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/jquery.sticky.js}"></script>
+    <script th:src="@{/js/click-scroll.js}"></script>
+    <script th:src="@{/js/animated-headline.js}"></script>
+    <script th:src="@{/js/modernizr.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
+  </div>
+
+  <div th:fragment="navbar-profile">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img th:src="@{/images/logo2}" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
+          <span class="navbar-brand-text">
+                            BRC
+                            <small>Bookmen</small>
+                        </span>
+        </a>
+
+        <div class="d-lg-none ms-auto me-3">
+          <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample"
+             role="button" aria-controls="offcanvasExample">Logout</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link click-scroll" th:href="@{/}">Home</a>
+            </li>
+
+          </ul>
+
+          <div class="d-none d-lg-block ms-lg-3">
+            <!--                <form th:action="@{/logout}" method=post>-->
+            <!--                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+            <!--                <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas"-->
+            <!--                   role="button" aria-controls="offcanvasExample">Logout</a>-->
+            <!--                </form>-->
+            <form th:action="@{/logout}" method=post>
+              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+              <button type="submit" class="btn custom-btn custom-border-btn">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div th:fragment="footer-profile">
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <hr>
+          <div class="col-lg-5 col-12 me-auto mb-5 mb-lg-0">
+            <h4 class="mb-4">Rules:</h4>
+            <p class="fs-6">The rules of the participation must be followed when you are here.</p>
+            <ul class="fs-6">
+              <li class="fs-6">The participation to the competition is set within a time frame, so you would be available on it.
+              </li>
+              <li class="fs-6">Your information like Email address, phone and home address would be real, so we could contact you.</li>
+              <li class="fs-6">You should submit all your answers at the end of competition and make sure yourself.</li>
+              <li class="fs-6">Only submitted works will be assessed and you would be informed through emails. </li>
+              <li class="fs-6">If you have questions about the participation, you can ask any time.</li>
+            </ul>
+
+          </div>
+
+          <div class="col-lg-1 col-12">
+
+          </div>
+
+          <div class="col-lg-6 col-12 ms-auto">
+            <h4 class="mb-4">Tips:</h4>
+            <p class="fs-6">The rules of the participation must be followed when you are here.</p>
+            <ul class="fs-6">
+              <li class="fs-6">to win the competition consider the followings:
+              </li>
+              <li class="fs-6">There are two types of questions, multiple-choose and explanation. The explanation questions would have more marks. </li>
+              <li class="fs-6">Read the book precisely and deeply and think about it as well.</li>
+              <li class="fs-6">The question are not only the content, but also information behind it. e.g. biography of the author(s), the objective of the book etc.</li>
+              <li class="fs-6">to effectively use the time, you must have made more writing practise. The competition takes almost 3 hours.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#81B29A" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+    </footer>
+  </div>
+
+</body>
+</html>
+

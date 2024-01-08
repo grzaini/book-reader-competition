@@ -7,9 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Reader")
@@ -18,8 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reader {
+//public class Reader {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String fullName_en;
     private String fullName_fa;
@@ -34,16 +33,12 @@ public class Reader {
     private String province_en;
     private String province_fa;
     private boolean participated;
+    private boolean enabled;
 
-
-    //relationship
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "ReaderExam",
-            joinColumns = {
-                    @JoinColumn(name = "readerId", referencedColumnName = "id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "examId", referencedColumnName = "id")
-            })
-    private List<Exam> exam = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "ReaderRoles",
+    joinColumns = {@JoinColumn(name = "readerId")},
+    inverseJoinColumns = {@JoinColumn(name = "roleId")})
+    private Set<Role> authorities;
 
 }

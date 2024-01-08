@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: common-header" />
+<body>
+
+<div th:replace="fragments :: navbar-profile"/>
+
+<section class="events-section events-detail-section section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+
+<div class="col-lg-8 col-12 mx-auto">
+    <h4 class="mb-4 pb-lg-2">Please Update your personal information!</h4>
+    <form action="#" th:action="@{/reader/info-updated}" th:object="${reader}" method="post" class="custom-form membership-form shadow-lg" role="form">
+<!--        <h4 class="text-white mb-4">Become a member</h4>-->
+
+        <input hidden="hidden" name="reader-id" th:value="${reader.id}" />
+
+        <div class="col-lg-6 col-md-6 col-12">
+        <div class="form-floating">
+            <input type="text" th:field="*{fullName_en}" class="form-control"
+                   placeholder="Full Name" required="">
+            <label>Full Name - English</label>
+        </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+        <div class="form-floating">
+            <input type="text" th:field="*{fullName_fa}" class="form-control"
+                   placeholder="Full Name" required="">
+            <label>Full Name - Persian</label>
+        </div>
+        </div>
+        <div class="form-floating">
+            <input type="email" th:field="*{mail}" pattern="[^ @]*@[^ @]*" class="form-control"
+                   placeholder="Email address" required="">
+            <label>Email address</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" th:field="*{mobile}" class="form-control"
+                   placeholder="Mobile Number" required="">
+            <label>Mobile Number</label>
+        </div>
+<!--        <div class="col-lg-6 col-md-6 col-12">-->
+<!--            <div class="form-floating">-->
+<!--                <input type="date" th:field="*{dob}" class="form-control"-->
+<!--                       placeholder="Full Name" required="">-->
+<!--                <label>Date of Birth</label>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="form-floating">
+                <input type="text" name="new-password" id="new-password" class="form-control"
+                       placeholder="Give new Password" required="">
+                <label>New Password*</label>
+            </div>
+        </div>
+
+        <button type="submit" class="form-control">Submit</button>
+    </form>
+</div>
+        </div>
+    </div>
+</section>
+
+
+<div th:replace="fragments :: footer-profile" />
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+</body>
+</html>

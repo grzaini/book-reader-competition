@@ -1,13 +1,18 @@
 package net.brc.service.impl;
 
+import net.brc.model.Exam;
 import net.brc.model.PasswordResetToken;
 import net.brc.model.Reader;
+import net.brc.model.ReaderExam;
 import net.brc.repo.PasswordResetTokenRepo;
 import net.brc.repo.ReaderRepo;
+import net.brc.service.ReaderExamService;
 import net.brc.service.ReaderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +27,15 @@ public class ReaderServiceImpl implements ReaderService {
     private PasswordResetTokenRepo passwordResetTokenRepo;
     @Autowired
     private ReaderRepo readerRepo;
-    public Optional<Reader> findReaderById(Long id) {
+
+    @Autowired
+    private ReaderService readerService;
+
+    @Autowired
+    private ReaderExamService readerExamService;
+
+    @Override
+    public Optional<Reader> findById(Long id) {
         return readerRepo.findById(id);
     }
 
@@ -33,6 +46,7 @@ public class ReaderServiceImpl implements ReaderService {
         for (Reader r : readerList){
             if (r.getMail().equals(email)){
                 foundReader = r;
+                break;
             }
             else{
                 foundReader = null;
@@ -56,4 +70,31 @@ public class ReaderServiceImpl implements ReaderService {
         final PasswordResetToken myToken = new PasswordResetToken(token, reader);
         passwordResetTokenRepo.save(myToken);
     }
+
+    @Override
+    public Exam findReaderExam(String email) {
+        Exam exam = new Exam();
+        Reader reader = readerService.findReaderByEmail(email);
+        List<ReaderExam> readerExamList = readerExamService.findAllReaderExam();
+        for (ReaderExam re : readerExamList){
+            if(re.getReader().getId() == reader.getId()){
+                exam = re.getExam();
+            }else {
+                exam = null;
+            }
+        }
+        return exam;
+    }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Reader reader = readerService.findReaderByEmail(username);
+//        if (reader == null){
+//            throw new UsernameNotFoundException("User not found");
+//        }
+//        return org.springframework.security.core.userdetails.User.builder()
+//                .username(reader.getMail())
+//                .password(reader.getPassword())
+//                .build();
+//    }
 }

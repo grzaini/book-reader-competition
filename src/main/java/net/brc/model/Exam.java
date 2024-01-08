@@ -6,7 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import net.brc.model.Book;
 
 @Entity
 @Table(name = "Exam")
@@ -16,7 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Exam {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
     private Date examDate;
     private String status_en;
@@ -29,10 +33,4 @@ public class Exam {
     @JoinColumn(name = "bookId", referencedColumnName = "id")
     private Book book;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Reader> reader = new ArrayList<>();
-//
-//    @OneToMany(targetEntity = Question.class, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "examId", referencedColumnName = "id")
-//    private List<Question> question = new ArrayList<>();
 }

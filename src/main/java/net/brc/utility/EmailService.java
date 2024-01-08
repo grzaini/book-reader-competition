@@ -18,8 +18,8 @@ public class EmailService {
             String contextPath, Locale locale, String token, Reader reader, String password
     ) {
 
-        String url = contextPath + "/newUser?token="+token;
-        String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
+        String url = contextPath + "/reader/newReader?token="+token;
+        String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n\n"+password;
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(reader.getMail());
         email.setSubject("BRC - New User");
