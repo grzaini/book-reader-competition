@@ -1,4 +1,4 @@
-![BRC-Structure](Screenshot 2024-01-27 at 19.13.50.png)
+![BRC-Structure]('Screenshot 2024-01-27 at 19.13.50.png')
 #### Über die Projekt
 Die BRC Application ist ein Web App und da der Wettkampf der Buchlesen angezogen wird. Jeden Monat findet ein Wettkampf statt und jeder engagierte Junger oder afghanische Mädchen, der/die sich interessiert an das Buchlesen, kann teilnehmen. Am Ende des Monats findet dort eine Prüfung statt, wer den großen Markt erhalten hat, kann die berücksichtigte Prämie erwerben, wenn wir einen finanzielle Unterstützung haben. Die Prämie wird den meisten drei Personen vergeben. Dies ist auch so gesagt, dass am erste malen Teilnehmenden von einer Provinz oder solchen Bezirken rechnen werden.
 
