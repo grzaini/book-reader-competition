@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -77,7 +78,7 @@ public class ReaderServiceImpl implements ReaderService {
         Reader reader = readerService.findReaderByEmail(email);
         List<ReaderExam> readerExamList = readerExamService.findAllReaderExam();
         for (ReaderExam re : readerExamList){
-            if(re.getReader().getId() == reader.getId()){
+            if(Objects.equals(re.getReader().getId(), reader.getId())){
                 exam = re.getExam();
             }else {
                 exam = null;

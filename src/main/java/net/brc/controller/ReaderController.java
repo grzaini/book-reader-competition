@@ -54,8 +54,8 @@ public class ReaderController {
 
         String password = SecurityUtility.randomPassword();
         String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
-
         reader.setPassword(encryptedPassword);
+
         //reader.getExam().add(currentExam);
         readerService.save(reader);
 
@@ -115,6 +115,9 @@ public class ReaderController {
         readerService.save(currentReader);
 
         model.addAttribute("reader", currentReader);
+
+        Exam readerExam = readerService.findReaderExam(currentReader.getMail());
+        model.addAttribute("readerExam", readerExam);
 
         return "my-profile";
     }
